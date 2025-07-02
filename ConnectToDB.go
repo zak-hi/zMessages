@@ -4,8 +4,10 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"net/http"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
 )
 
@@ -42,24 +44,53 @@ func main() {
 	}
 	fmt.Println("Connected to database!")
 
-	// Example: Query all users
-	rows, err := db.Query("SELECT id, username, password, phone FROM users")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		var u User
-		err := rows.Scan(&u.ID, &u.Username, &u.Password, &u.Phone)
-		if err != nil {
-			log.Fatal(err)
+	router := gin.Default()
+	router.POST("/add-user", func(c *gin.Context) {
+		var newUser User
+		if err := c.ShouldBindJSON(&newUser); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input"})
+			return
 		}
-		fmt.Printf("User: %#v\n", u)
-	}
 
-	// Handle any rows errors
-	if err = rows.Err(); err != nil {
-		log.Fatal(err)
-	}
+		// Basic validation
+		if len(newUser.Username) < 3 || len(newUser.Password) < 5 || len(newUser.Phone) != 10 {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Validation failed"})
+			return
+		}
+
+		// Insert user
+		query := `INSERT INTO users (username, password, phone) VALUES ($1, $2, $3) RETURNING id`
+		err := db.QueryRow(query, newUser.Username, newUser.Password, newUser.Phone).Scan(&newUser.ID) //will fail if the user already exists
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to insert user"})
+			return
+		}
+
+		c.JSON(http.StatusCreated, gin.H{
+			"message": "User created",
+			"user":    newUser,
+		})
+	})
+
+	router.GET("/users", func(c *gin.Context) {
+		rows, err := db.Query("SELECT id, username, phone FROM users")
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch users"})
+			return
+		}
+		defer rows.Close()
+
+		var users []User
+		for rows.Next() {
+			var user User
+			if err := rows.Scan(&user.ID, &user.Username, &user.Phone); err != nil {
+				c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to scan user"})
+				return
+			}
+			users = append(users, user)
+		}
+
+		c.JSON(http.StatusOK, users)
+	})
+	router.Run(":8080")
 }
