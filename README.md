@@ -25,13 +25,13 @@ zMessages/
 │   └── service.go
 ├── messages/                 # Messaging logic (optional)
 ├── go.mod / go.sum           # Go module and dependency tracking
+
+
 🧪 How to Run
 1. Clone the repo
-bash
-Copy
-Edit
 git clone https://github.com/zak-hi/zMessages.git
 cd zMessages
+
 2. Set up the PostgreSQL DB
 Using Postgres.app, create a local database called zMessage_DB on port 5431.
 
