@@ -6,22 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		3130C6E22E20385000AACD25 /* WhichUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130C6E12E20385000AACD25 /* WhichUser.swift */; };
-		319007FF2E170C1B00617581 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319007FE2E170C1B00617581 /* MessageView.swift */; };
-		319008012E170D4400617581 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319008002E170D4400617581 /* Endpoints.swift */; };
-		3190084A2E170E5200617581 /* APIclient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319008492E170E5100617581 /* APIclient.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		3130C6E12E20385000AACD25 /* WhichUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichUser.swift; sourceTree = "<group>"; };
 		319007E02E170A5C00617581 /* zMessagesFrontEnd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zMessagesFrontEnd.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		319007FE2E170C1B00617581 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
-		319008002E170D4400617581 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
-		319008492E170E5100617581 /* APIclient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIclient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		3130C6F22E20606700AACD25 /* API */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = API;
+			sourceTree = "<group>";
+		};
 		319007E22E170A5C00617581 /* zMessagesFrontEnd */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = zMessagesFrontEnd;
@@ -43,10 +37,7 @@
 		319007D72E170A5C00617581 = {
 			isa = PBXGroup;
 			children = (
-				3130C6E12E20385000AACD25 /* WhichUser.swift */,
-				319007FE2E170C1B00617581 /* MessageView.swift */,
-				319008002E170D4400617581 /* Endpoints.swift */,
-				319008492E170E5100617581 /* APIclient.swift */,
+				3130C6F22E20606700AACD25 /* API */,
 				319007E22E170A5C00617581 /* zMessagesFrontEnd */,
 				319007E12E170A5C00617581 /* Products */,
 			);
@@ -76,6 +67,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				3130C6F22E20606700AACD25 /* API */,
 				319007E22E170A5C00617581 /* zMessagesFrontEnd */,
 			);
 			name = zMessagesFrontEnd;
@@ -134,10 +126,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				319007FF2E170C1B00617581 /* MessageView.swift in Sources */,
-				319008012E170D4400617581 /* Endpoints.swift in Sources */,
-				3130C6E22E20385000AACD25 /* WhichUser.swift in Sources */,
-				3190084A2E170E5200617581 /* APIclient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

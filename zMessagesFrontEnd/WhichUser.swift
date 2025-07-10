@@ -11,7 +11,7 @@ struct WhichUser: View {
     var body: some View {
         ScrollView {
             ForEach(totalUsers) { userProfile in
-                Text(userProfile.username) //make this a button that links to users and u can select each contact and get convos
+                NavigationLink(userProfile.username, destination: UservUser(user: userProfile))
             }
         }
         .onAppear{
