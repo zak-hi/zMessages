@@ -2,8 +2,6 @@
 //  ContentView.swift
 //  zMessagesFrontEnd
 //
-//  Created by Zak Lalani on 7/3/25.
-//
 
 import SwiftUI
 import SwiftData

@@ -25,7 +25,7 @@ struct zMessagesFrontEndApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MessageView()
         }
         .modelContainer(sharedModelContainer)
     }
