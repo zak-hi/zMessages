@@ -28,13 +28,16 @@ zMessages/
 ```
 
 
-
+```
 🧪 How to Run
 1. Clone the repo
 git clone https://github.com/zak-hi/zMessages.git
 cd zMessages
+```
 
-3. Set up the PostgreSQL DB
+```
+
+2. Set up the PostgreSQL DB
 Using Postgres.app, create a local database called zMessage_DB on port 5431.
 
 Inside that DB, run:
@@ -54,9 +57,15 @@ CREATE TABLE messages (
     sender_id INTEGER NOT NULL REFERENCES users(id),
     receiver_id INTEGER NOT NULL REFERENCES users(id)
 );
+
+```
+
+```
 3. Run the Go server
 go run ConnectToDB.go
 Server will run at: http://localhost:8080
+```
+
 
 🚀 API Endpoints
 ➕ Create Account
